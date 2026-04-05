@@ -463,12 +463,22 @@ export function detectCombos(detectedIds) {
  * @returns {string[]} Agent identifiers suitable for `npx skills add -a ...`.
  */
 export function detectAgents(home = homedir()) {
-  const agents = ["universal"];
+  const agents = [{ id: "universal", label: "Universal (.agents)", detected: true }];
 
-  for (const [folder, agentName] of AGENT_FOLDER_ENTRIES) {
-    if (existsSync(join(home, folder, "skills"))) {
-      agents.push(agentName);
-    }
+  for (const [folder, agentId] of AGENT_FOLDER_ENTRIES) {
+    const isDetected = existsSync(join(home, folder, "skills"));
+
+    // Convert "github-copilot" -> "Github Copilot"
+    const label = agentId
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
+    agents.push({
+      id: agentId,
+      label,
+      detected: isDetected,
+    });
   }
 
   return agents;

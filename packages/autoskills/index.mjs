@@ -302,7 +302,10 @@ async function main() {
   printDetected(detected, combos, isFrontend);
 
   const skills = collectSkills(detected, isFrontend, combos);
-  const resolvedAgents = agents.length > 0 ? agents : detectAgents();
+  const allAgents = detectAgents();
+  const defaultAgentIds = allAgents.filter((a) => a.detected).map((a) => a.id);
+
+  let resolvedAgents = agents.length > 0 ? agents : defaultAgentIds;
 
   if (skills.length === 0) {
     log(yellow("   No skills available for your stack yet."));
@@ -324,6 +327,26 @@ async function main() {
   }
 
   const selectedSkills = await selectSkills(skills, autoYes);
+
+  if (agents.length === 0 && !autoYes) {
+    log(cyan("   ◆ ") + bold(`Select target IDEs/Agents`));
+    log();
+
+    const selectedAgents = await multiSelect(allAgents, {
+      labelFn: (a) => a.label,
+      hintFn: (a) => (a.detected ? green("(detected)") : ""),
+      selectedFn: (a) => a.detected,
+    });
+
+    if (selectedAgents.length === 0) {
+      log();
+      log(dim("   No IDEs selected. Exiting."));
+      log();
+      process.exit(0);
+    }
+
+    resolvedAgents = selectedAgents.map((a) => a.id);
+  }
 
   if (!autoYes && process.stdout.isTTY) {
     write("\x1b[H\x1b[2J\x1b[3J");
