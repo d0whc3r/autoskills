@@ -247,7 +247,7 @@ export const SKILLS_MAP = [
       "clerk/skills/clerk",
       "clerk/skills/clerk-setup",
       "clerk/skills/clerk-custom-ui",
-      "clerk/skills/clerk-nextjs-patterns",
+      "clerk/skills/clerk-backend-api",
       "clerk/skills/clerk-orgs",
       "clerk/skills/clerk-webhooks",
       "clerk/skills/clerk-testing",
@@ -612,6 +612,14 @@ export const SKILLS_MAP = [
     },
     skills: ["nodnarbnitram/claude-code-extensions/tauri-v2"],
   },
+  {
+    id: "rust",
+    name: "Rust",
+    detect: {
+      configFiles: ["Cargo.toml"],
+    },
+    skills: ["apollographql/skills/rust-best-practices"],
+  },
 ];
 
 // ── Combo Skills Map (cross-technology) ──────────────────────
@@ -684,11 +692,37 @@ export const COMBO_SKILLS_MAP = [
     id: "nextjs-clerk",
     name: "Next.js + Clerk",
     requires: ["nextjs", "clerk"],
-    skills: [
-      "clerk/skills/clerk-nextjs-patterns",
-      "clerk/skills/clerk-setup",
-      "clerk/skills/clerk",
-    ],
+    skills: ["clerk/skills/clerk-nextjs-patterns"],
+  },
+  {
+    id: "nuxt-clerk",
+    name: "Nuxt + Clerk",
+    requires: ["nuxt", "clerk"],
+    skills: ["clerk/skills/clerk-nuxt-patterns"],
+  },
+  {
+    id: "vue-clerk",
+    name: "Vue + Clerk",
+    requires: ["vue", "clerk"],
+    skills: ["clerk/skills/clerk-vue-patterns"],
+  },
+  {
+    id: "react-clerk",
+    name: "React + Clerk",
+    requires: ["react", "clerk"],
+    skills: ["clerk/skills/clerk-react-patterns"],
+  },
+  {
+    id: "astro-clerk",
+    name: "Astro + Clerk",
+    requires: ["astro", "clerk"],
+    skills: ["clerk/skills/clerk-astro-patterns"],
+  },
+  {
+    id: "expo-clerk",
+    name: "Expo + Clerk",
+    requires: ["expo", "clerk"],
+    skills: ["clerk/skills/clerk-expo-patterns"],
   },
   {
     id: "react-react-three-fiber",
@@ -731,6 +765,7 @@ export const AGENT_FOLDER_MAP = {
   ".cursor": "cursor",
   ".cline": "cline",
   ".codex": "codex",
+  ".opencode": "opencode",
   ".antigravity": "antigravity",
   ".augment": "augment",
   ".copilot": "github-copilot",
@@ -740,7 +775,7 @@ export const AGENT_FOLDER_MAP = {
   ".supermaven": "supermaven",
   ".codebuddy": "codebuddy",
   ".continue": "continue",
-  ".kiro": "kiro",
+  ".kiro": "kiro-cli",
 };
 
 export const WEB_FRONTEND_EXTENSIONS = new Set([
