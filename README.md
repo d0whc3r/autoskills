@@ -51,10 +51,6 @@ You can customize detection and skill mapping with config files:
 
 Full schema, options, and examples are documented in [packages/autoskills/README.md](./packages/autoskills/README.md#custom-skill-configuration).
 
-## Supported technologies
-
-React · Next.js · Vue · Nuxt · Pinia · Svelte · Angular · Astro · Tailwind CSS · shadcn/ui · TypeScript · Supabase · Neon · Playwright · Expo · React Native · Kotlin Multiplatform · Android · Remotion · Better Auth · Clerk · Turborepo · Vite · Azure · Vercel · Vercel AI SDK · ElevenLabs · Cloudflare · Durable Objects · Cloudflare Agents · Cloudflare AI · AWS · SwiftUI · oxlint · GSAP · Three.js · Node.js · Express · Bun · Deno · Prisma · Stripe · Hono · Vitest · Drizzle ORM · NestJS · Tauri · Spring Boot
-
 ## Supported Technologies
 
 Built to work across modern frontend, backend, mobile, cloud, and media stacks.
